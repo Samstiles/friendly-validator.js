@@ -10,8 +10,8 @@ A Node.JS validation library using node-validator, but with user-friendly valida
 The goal of this library is:
 
 - to be able to toss some form data (JSON key/value pairs) into a validate() function where you specify some simple rules (isEmail, isPhone, isCreditCard)
-- IF there are NO errors: to return false, so we can do the simple and familiar `if (!err)` syntax 
 - IF there are errors: to have it return a big list of plain-english errors that you can send back to the clientside, and output immediately, **without** having to write logic to convert "programmer errors" into "user friendly errors".
+- IF there are NO errors: to return false, so we can do the simple and familiar `if (err) doSomeErrorThing()` syntax 
 
 ###Proposed Implementation 1:
 ***
