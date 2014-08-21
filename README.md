@@ -13,6 +13,42 @@ The goal of this library is:
 - IF there are errors: to have it return a big list of plain-english errors that you can send back to the clientside, and output immediately, **without** having to write logic to convert "programmer errors" into "user friendly errors".
 - IF there are NO errors: to return false, so we can do the simple and familiar `if (err) doSomeErrorThing()` syntax 
 
+Before (ugly and needs to be plain-english-ified before the user can see it, E.G. more work)
+============================================================================================
+```javascript
+{
+  "invalidAttributes": {
+    "password": [
+      {
+        "rule": "numeric",
+        "message": "`undefined` should be an integer (instead of \"null\", which is a object)"
+      },
+      {
+        "rule": "minLength",
+        "message": "\"minLength\" validation rule failed for input: null"
+      }
+    ],
+    "email": [
+      {
+        "rule": "required",
+        "message": "\"required\" validation rule failed for input: null"
+      }
+    ]
+  }
+}
+```
+
+After (pretty and sendable to user *immediately*)
+=================================================
+```javascript
+[
+  { password: 'Your password must contain only numbers.' },
+  { password: 'Your password must be at least 4 characters long.' },
+  { email: 'Email is a required field.' }
+]
+```
+
+
 ###Proposed Implementation 1:
 ***
 
