@@ -16,30 +16,19 @@ The goal of this library is:
 ###Proposed Implementation 1:
 ***
 
-```javascript
-var data = {
-  email: 'foo@bar.com',
-  password: 'pass1234',
-  phone: '5064555555'
-};
+> Function:
+> - validate()
 
-var err = validate([
-  {value: data.email, rule: 'isEmail'},
-  {value: data.phone, rule: 'isPhone'},
-  {value: data.password, rules: ['minLength(8)', 'maxLength(16)']}
-]);
-```
-
-Parameters:
-- a single, or an array of JSON key/value pair(s) (i.e. some JSON from the client), and a set of rules to check the key/value pair(s) against.
+> Parameters:
+> - a single, or an array of JSON key/value pair(s) (i.e. some JSON from the client), and a set of rules to check the key/value pair(s) against.
 
 `var err = validate(someJSONObject, ['someRuleToApply', 'someOtherRuleToApply']`
 
 `var err = validate({email: 'foo@bar.com'}, 'isEmail');`
 
-Returns:
-- if all of the values passed in pass **all** of their validation rules, `err` will equal `false`.
-- if ANY of the values passed in fail their test, a plain english array of `input_that_contains_error/plain_english_error_message` key/value pairs will be returned
+> Returns:
+> - if all of the values passed in pass **all** of their validation rules, `err` will equal `false`.
+> - if ANY of the values passed in fail their test, a plain english array of > > > >`input_that_contains_error/plain_english_error_message` key/value pairs will be returned
 
 Examples of implementation 1
 ----------------------------
