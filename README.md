@@ -29,7 +29,7 @@ The goal of this library is:
 > - if all of the values passed in pass **all** of their validation rules, `err` will equal `false`.
 > - if ANY of the values passed in fail their test, a plain english array of `input_that_contains_error/plain_english_error_message` key/value pairs will be returned
 
-`var err = validate(someJSONObject, ['someRuleToApply', 'someOtherRuleToApply']`
+`var err = validate(someJSONObject, ['someRuleToApply', 'someOtherRuleToApply']);`
 
 `var err = validate({email: 'foo@bar.com'}, 'isEmail');`
 
