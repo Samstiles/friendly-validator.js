@@ -46,7 +46,7 @@ console.log(err); // 'false'
 // because all values passed all validations, there is no err, continue to next code
 ```
 
-Validate 1 value, which fails
+Validate 1 value, which fails validations... and returns a simple  `{ input_that_contained_error: 'error message' }` for the failed validation rule.
 ```javascript
 var phone = '5064555555';
 var err = validate({value: phone, rule: 'isMinLength(25)'}); // phone fails this validation test
@@ -70,7 +70,7 @@ var err = validate([
 console.log(err); // false, all values passed all validations
 ```
 
-Validate an entire form of data, which all fail validations
+Validate an entire form of data, which all fail validations... and returns a simple array containing a `{ input_that_contained_error: 'error message' }` for every failed validation rule.
 ```javascript
 var phone = 'aaaaf3af4f4fa6g5asg453vesfa';
 var email = 'totallyNotAnEmail';
