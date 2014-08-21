@@ -3,7 +3,9 @@
 
 A Node.JS validation library using node-validator, but with user-friendly validation error messages.
 
-[Here's a sample validation error sent to my clientside right now in Sails apps](http://puu.sh/b1grW/6233799473.png). Many (most) ORMs all return very "programmer friendly" errors, but not "user friendly" errors. **This is bad** because it requires the programmer to "convert" the programmer-errors into user-friendly errors before displaying them to the user, and that sucks. More work sucks.
+[Here's a sample validation error sent to my clientside right now in Sails apps](http://puu.sh/b1grW/6233799473.png). Many (most) ORMs all return very "programmer friendly" errors, but not "user friendly" errors.
+
+**This is bad** because it requires the programmer to "convert" the programmer-errors into user-friendly errors before displaying them to the user, and that sucks. More work sucks.
 
 The goal of this library is:
 
