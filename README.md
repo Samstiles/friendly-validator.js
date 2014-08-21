@@ -20,7 +20,9 @@ The goal of this library is:
 > - validate()
 
 > Parameters:
+
 > 1. JSON to validate
+
 > 2. Rules to apply
 
 > Returns:
