@@ -33,7 +33,8 @@ var err = validate([
 Parameters:
 - a single, or an array of JSON key/value pair(s) (i.e. some JSON from the client), and a set of rules to check the key/value pair(s) against.
 
-`var err = validate(someJSONObject, ['someRuleToApply']`
+`var err = validate(someJSONObject, ['someRuleToApply', 'someOtherRuleToApply']`
+
 `var err = validate({email: 'foo@bar.com'}, 'isEmail');`
 
 Returns:
