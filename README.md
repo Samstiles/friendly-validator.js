@@ -3,7 +3,7 @@
 
 A Node.JS validation library using node-validator, but with user-friendly validation error messages.
 
-Sample validation error sent to clients right now in Sails apps:
+![Here's a sample validation error sent to my clientside right now in Sails apps](http://puu.sh/b1grW/6233799473.png). Many (most) ORMs all return very "programmer friendly" errors, but not "user" friendly errors.
 
 ```javascript
 
