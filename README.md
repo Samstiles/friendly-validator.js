@@ -38,6 +38,7 @@ Returns:
 Examples of implementation 1
 ----------------------------
 
+Validate 1 value, which passes
 ```javascript
 var email = 'foo@bar.com';
 var err = validate({value: email, rule: 'isEmail'}); // email passes this validation test
@@ -45,6 +46,7 @@ console.log(err); // 'false'
 // because all values passed all validations, there is no err, continue to next code
 ```
 
+Validate 1 value, which fails
 ```javascript
 var phone = '5064555555';
 var err = validate({value: phone, rule: 'isMinLength(25)'}); // phone fails this validation test
@@ -52,6 +54,7 @@ console.log(err); // '[{phone: 'Phone must be at least 25 characters long.'}]'
 // because it failed the validation, there is no err. So what we get back is a very simple "Heres what input has the error so we know which input to make all red and scary, and heres the error message to show below it explaining what the problem was" input/error JSON object
 ```
 
+Validate an entire form of data, which all pass validations
 ```javascript
 var phone = '5064555555';
 var email = 'foo@bar.com';
@@ -67,6 +70,7 @@ var err = validate([
 console.log(err); // false, all values passed all validations
 ```
 
+Validate an entire form of data, which all fail validations
 ```javascript
 var phone = 'aaaaf3af4f4fa6g5asg453vesfa';
 var email = 'totallyNotAnEmail';
