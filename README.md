@@ -20,7 +20,9 @@ The goal of this library is:
 > - validate()
 
 > Parameters:
-> - a single, or an array of JSON key/value pair(s) (i.e. some JSON from the client), and a set of rules to check the key/value pair(s) against.
+> 1. JSON to validate
+> - Rules to apply
+
 > Returns:
 > - if all of the values passed in pass **all** of their validation rules, `err` will equal `false`.
 > - if ANY of the values passed in fail their test, a plain english array of `input_that_contains_error/plain_english_error_message` key/value pairs will be returned
