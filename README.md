@@ -21,7 +21,7 @@ The goal of this library is:
 
 > Parameters:
 > 1. JSON to validate
-> - Rules to apply
+> 2. Rules to apply
 
 > Returns:
 > - if all of the values passed in pass **all** of their validation rules, `err` will equal `false`.
