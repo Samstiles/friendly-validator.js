@@ -14,7 +14,7 @@ The goal of this library is:
 - IF there are NO errors: to return false, so we can do the simple and familiar `if (err) doSomeErrorThing()` syntax 
 
 Before (ugly and needs to be plain-english-ified before the user can see it, E.G. more work)
-============================================================================================
+-------------------------------
 ```javascript
 {
   "invalidAttributes": {
@@ -39,7 +39,7 @@ Before (ugly and needs to be plain-english-ified before the user can see it, E.G
 ```
 
 After (pretty and sendable to user *immediately*)
-=================================================
+-------------------------------
 ```javascript
 [
   { password: 'Your password must contain only numbers.' },
