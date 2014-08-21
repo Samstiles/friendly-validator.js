@@ -51,7 +51,9 @@ Validate 1 value, which fails validations... and returns a simple  `{ input_that
 var phone = '5064555555';
 var err = validate({value: phone, rule: 'isMinLength(25)'}); // phone fails this validation test
 console.log(err); // '[{phone: 'Phone must be at least 25 characters long.'}]'
-// because it failed the validation, there is no err. So what we get back is a very simple "Heres what input has the error so we know which input to make all red and scary, and heres the error message to show below it explaining what the problem was" input/error JSON object
+// because it failed the validation, there is no err. So what we get back is a very simple "Heres what
+// input has the error so we know which input to make all red and scary, and heres the error message to
+// show below it explaining what the problem was" input/error JSON object
 ```
 
 Validate an entire form of data, which all pass validations
@@ -91,7 +93,9 @@ console.log(err); // see lines below for full output...
 //   {name: 'Your name must be at least 3 characters long.'},
 //   {agreed_to_terms: 'Agreed to Terms must be true.'} ]
 
-// now on the client side, all you do is loop through the returned array, attaching the class of "error" to any inputs whose "name" attribute matches what the server sent back, and you add the actual error message itself just below the input
+// now on the client side, all you do is loop through the returned array, attaching the class of "error"
+// to any inputs whose "name" attribute matches what the server sent back, and you add the actual error
+// message itself just below the input
 ```
 
 
