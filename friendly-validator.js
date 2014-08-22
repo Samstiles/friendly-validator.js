@@ -51,56 +51,45 @@ function validate(data) {
 }
 
 /**
- * Utility function to ensure a valid object value/rules pair is supplied
+ * Predicate function to ensure a valid object value/rules pair is supplied
  */
 function isValidValidatorObject(object) {
   var validKeys = _.keys({value: '', rules: ''}).sort();
   var passedKeys;
-  var err;
-
+  var err = false;
   // If they passed in an array, loop through each one, and fail if any of them
   // are malformed.
   if (object instanceof Array) {
     _.each(object, function(item) {
-      passedKeys = _.keys(item).sort();
-      if (!validKeys.equals(passedKeys))
+      var itemKeys = _.keys(item).sort();
+      if (!itemKeys.equals(validKeys))
         err = true;
     });
-    err = false;
+    return (err) ? false : true;
+  } else {
+    // Otherwise, check if the object they passed in is valid.
+    passedKeys = _.keys(object).sort();
+    return validKeys.equals(passedKeys);
   }
-
-  if (err)
-    return false;
-
-  // Otherwise, check if the object they passed in is valid.
-  passedKeys = _.keys(object).sort();
-  return validKeys.equals(passedKeys);
 }
 
 /**
- * Utility function to ensure the second key of the object is of type array
+ * Predicate function to ensure the second key of the object is of type array
  */
 function hasValidRuleset(object) {
-  var err;
+  var err = false;
   // If they passed in an array, loop through each one, and fail if any of them
   // are malformed.
   if (object instanceof Array) {
     _.each(object, function(item) {
-      console.log('Item ruleset: ', typeof(item.rules));
-      console.log('Proper ruleset: ', []);
-      console.log('Proper type? ', item.rules instanceof Array);
-
       if (!(item.rules instanceof Array))
         err = true;
     });
-    err = false;
+    return (err) ? false : true;
+  } else {
+    // Otherwise, check if the single object they passed in is valid.
+    return object.rules instanceof Array;
   }
-
-  if (err)
-    return false;
-
-  // Otherwise, check if the single object they passed in is valid.
-  return object.rules instanceof Array;
 }
 
 /**
