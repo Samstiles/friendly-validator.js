@@ -3,13 +3,11 @@ var _ = require('lodash');
 
 module.exports = function(data) {
 
-  console.log('\n\n');
-
   /**
    * Set up potential return options, error strings
    */
-  var errors = [];
-  var invalidArgsMalformedObject = "Invalid argument supplied. Friendly Validator requires the data you're passing in to be of format";
+  var errors;
+  var invalidArgsMalformedObject = "Invalid argument supplied. Friendly Validator requires the data you're passing in to be in a specific format.";
   var invalidArgsIncorrectNumber = "Invalid argument supplied. Friendly Validator expects 1 parameter.";
   var invalidArgsIncorrectType = "Invalid argument supplied. Friendly Validator expects data passed to be an Object or an Array.";
 
@@ -32,40 +30,56 @@ module.exports = function(data) {
   if (!isValidValidatorObject(data))
     throw new Error(invalidArgsMalformedObject);
 
-  /**
-   * Utility function to ensure a valid object value/rules pair is supplied
-   */
-  function isValidValidatorObject(object) {
-    var validKeys = _.keys({value: '', rules: ''}).sort();
-    var passedKeys;
+  errors = validate(data);
+  return errors;
+};
 
-    if (object instanceof Array) {
-      _.each(object, function(item) {
-        passedKeys = _.keys(item).sort();
+/**
+ * Primary Validate Function
+ */
+function validate(data) {
+  if (data instanceof Array) {
+    return false;
+  } else {
+    return false;
+  }
+}
 
-        if (passedKeys !== validKeys)
-          return false;
-      });
-      return true;
-    }
+/**
+ * Utility function to ensure a valid object value/rules pair is supplied
+ */
+function isValidValidatorObject(object) {
+  var validKeys = _.keys({value: '', rules: ''}).sort();
+  var passedKeys;
 
-    passedKeys = _.keys(object).sort();
-    return validKeys === passedKeys;
+  if (object instanceof Array) {
+    _.each(object, function(item) {
+      passedKeys = _.keys(item).sort();
+
+      if (!passedKeys.equals(validKeys))
+        return false;
+    });
+    return true;
   }
 
-  /**
-   * Primary Validate Function
-   */
-  (function validate(data) {
+  passedKeys = _.keys(object).sort();
+  console.log('Passed keys:', passedKeys);
+  console.log('Valid keys:', validKeys);
+  return validKeys.equals(passedKeys);
+}
 
-    if (data instanceof Array) {
-      // do multiple stuff
-    } else {
-
-      /**
-       * If there are errors, return those. Otherwise, return false.
-       */
-      return (errors.length > 0) ? errors : false;
-    }
-  })();
+/**
+ * Array prototype function to compare equality of two arrays
+ */
+Array.prototype.equals = function (array) {
+    if (!array)
+        return false; 
+    if (this.length != array.length)
+        return false;
+    for (var i = 0, l=this.length; i < l; i++) {
+        if (this[i] !== array[i]) { 
+            return false;   
+        }           
+    }       
+    return true;
 };

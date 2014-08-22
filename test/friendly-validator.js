@@ -30,6 +30,7 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
    */
   it('should NOT throw an error because the object were passing is valid', function() {
     var err = validate({ value: '', rules: ''});
+    console.log(err);
     expect(err).to.equal(false);
   });
 
