@@ -14,36 +14,6 @@ module.exports = function(data) {
   var invalidArgsIncorrectType = "Invalid argument supplied. Friendly Validator expects data passed to be an Object or an Array.";
 
   /**
-   * Primary Validate Functions
-   */
-  function validate(object) {
-
-    if (object instanceof Array) {
-      // do multiple stuff
-    } else {
-
-      /**
-       * Throw an error if the data object they passed isn't in the allowed format of { value: '', rules: [] }
-       */
-      if (!isValidValidatorObject(object))
-        throw new Error(invalidArgMalformedObject);
-
-      // do single stuff
-    }
-  }
-
-  /**
-   * Utility function to ensure a valid object value/rules pair is supplied
-   */
-  function isValidValidatorObject(object) {
-    var validKeys = _.keys({value: '', rules: ''}).sort();
-    var passedKeys = _.keys(object).sort();
-    console.log('Valid Keys: ', validKeys);
-    console.log('Passed keys: ', passedKeys);
-    return validKeys === passedKeys;
-  }
-
-  /**
    * Throw an error if they supplied an incorrect number of arguments
    */
   if (_.size(arguments) !== 1)
@@ -57,16 +27,45 @@ module.exports = function(data) {
     throw new Error(invalidArgsIncorrectType);
 
   /**
-   * Main if/else to handle the validation
+   * Throw an error if the data object they passed isn't in the allowed format of { value: '', rules: [] }
    */
-  if (data instanceof Array) {
-    // many!
-  } else if (data instanceof Object) {
-    validateOne(data);
+  if (!isValidValidatorObject(data))
+    throw new Error(invalidArgsMalformedObject);
+
+  /**
+   * Utility function to ensure a valid object value/rules pair is supplied
+   */
+  function isValidValidatorObject(object) {
+    var validKeys = _.keys({value: '', rules: ''}).sort();
+    var passedKeys;
+
+    if (object instanceof Array) {
+      _.each(object, function(item) {
+        passedKeys = _.keys(item).sort();
+
+        if (passedKeys !== validKeys)
+          return false;
+      });
+      return true;
+    }
+
+    passedKeys = _.keys(object).sort();
+    return validKeys === passedKeys;
   }
 
   /**
-   * If there are errors, return those. Otherwise, return false.
+   * Primary Validate Function
    */
-  return (errors.length > 0) ? errors : false;
+  (function validate(data) {
+
+    if (data instanceof Array) {
+      // do multiple stuff
+    } else {
+
+      /**
+       * If there are errors, return those. Otherwise, return false.
+       */
+      return (errors.length > 0) ? errors : false;
+    }
+  })();
 };
