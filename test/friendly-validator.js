@@ -28,9 +28,8 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
   /**
    * Opposite as above, test that it DOESN'T throw an error because it is a properly formatted object
    */
-  it('should NOT throw an error because the object were passing is valid', function() {
+  it('should NOT throw an error because the object were passing is in a valid format', function() {
     var err = validate({ value: '', rules: ''});
-    console.log(err);
     expect(err).to.equal(false);
   });
 

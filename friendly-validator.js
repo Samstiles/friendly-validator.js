@@ -63,8 +63,6 @@ function isValidValidatorObject(object) {
   }
 
   passedKeys = _.keys(object).sort();
-  console.log('Passed keys:', passedKeys);
-  console.log('Valid keys:', validKeys);
   return validKeys.equals(passedKeys);
 }
 
