@@ -1,0 +1,33 @@
+{
+  "name": "friendly-validator.js",
+  "version": "0.0.1",
+  "description": "A Node.JS validation library using node-validator, but with user-friendly validation error messages.",
+  "main": "friendly-validator.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Latros/friendly-validator.js.git"
+  },
+  "keywords": [
+    "validator",
+    "validation",
+    "user",
+    "friendly"
+  ],
+  "author": "Sam Stiles <latrosbc@gmail.com> (http://samstil.es/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Latros/friendly-validator.js/issues"
+  },
+  "homepage": "https://github.com/Latros/friendly-validator.js",
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "validator": "^3.17.0"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.21.4"
+  }
+}
