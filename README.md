@@ -146,7 +146,7 @@ console.log(err); // see lines below for full output...
 // message itself just below the input
 ```
 
-
-
-
+###License
+***
+[MIT License](http://samuelstiles.mit-license.org/)  Copyright © 2012-2014 Samuel Stiles
 
