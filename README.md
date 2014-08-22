@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Latros/friendly-validator.js.svg?branch=master)](https://travis-ci.org/Latros/friendly-validator.js)
+
 ###friendly-validator.js
 ***
 
