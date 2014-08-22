@@ -96,14 +96,14 @@ function hasValidRuleset(object) {
  * Array prototype function to compare equality of two arrays
  */
 Array.prototype.equals = function (array) {
-    if (!array)
-        return false; 
-    if (this.length != array.length)
-        return false;
-    for (var i = 0, l=this.length; i < l; i++) {
-        if (this[i] !== array[i]) { 
-            return false;   
-        }           
-    }       
-    return true;
+  if (!array)
+      return false; 
+  if (this.length != array.length)
+      return false;
+  for (var i = 0, l=this.length; i < l; i++) {
+      if (this[i] !== array[i]) { 
+          return false;   
+      }           
+  }       
+  return true;
 };
