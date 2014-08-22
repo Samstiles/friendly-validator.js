@@ -1,5 +1,5 @@
 {
-  "name": "friendly-validator.js",
+  "name": "friendly-validator",
   "version": "0.0.2",
   "description": "A Node.JS validation library using node-validator, but with user-friendly validation error messages.",
   "main": "friendly-validator.js",
