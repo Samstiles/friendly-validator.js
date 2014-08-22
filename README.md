@@ -148,5 +148,5 @@ console.log(err); // see lines below for full output...
 
 ###License
 ***
-[MIT License](http://samuelstiles.mit-license.org/)  Copyright © 2012-2014 Samuel Stiles
+[MIT License](http://samuelstiles.mit-license.org/)  Copyright © 2014 Samuel Stiles
 
