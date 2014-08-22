@@ -4,12 +4,12 @@ var _ = require('lodash');
 module.exports = function(data) {
 
   /**
-   * Set up potential return options, error strings
+   * Set up error strings
    */
-  var errors;
   var invalidArgsMalformedObject = "Invalid argument supplied. Friendly Validator requires the data you're passing in to be in a specific format.";
   var invalidArgsIncorrectNumber = "Invalid argument supplied. Friendly Validator expects 1 parameter.";
   var invalidArgsIncorrectType = "Invalid argument supplied. Friendly Validator expects data passed to be an Object or an Array.";
+  var invalidArgsIncorrectRuleset = "Invalid argument supplied. One or all of the objects passed in has an ivalid ruleset. Rulesets must be arrays.";
 
   /**
    * Throw an error if they supplied an incorrect number of arguments
@@ -19,7 +19,7 @@ module.exports = function(data) {
 
   /**
    * Throw an error if they did pass a parameter, but it isn't a valid type (object or array)
-   * @NOTES: Both Arrays and Objects are instances of Object, so we only need 1 check to cover both.
+   * @NOTES: Both Arrays and Objects are instances of Object (yay javascrpt!), so we only need 1 check to cover both.
    */
   if (!(data instanceof Object))
     throw new Error(invalidArgsIncorrectType);
@@ -30,8 +30,13 @@ module.exports = function(data) {
   if (!isValidValidatorObject(data))
     throw new Error(invalidArgsMalformedObject);
 
-  errors = validate(data);
-  return errors;
+  /**
+   * Throw an error if the ruleset(s) aren't arrays
+   */
+  if (!hasValidRuleset(data))
+    throw new Error(invalidArgsIncorrectRuleset);
+
+  return validate(data);
 };
 
 /**
@@ -51,19 +56,51 @@ function validate(data) {
 function isValidValidatorObject(object) {
   var validKeys = _.keys({value: '', rules: ''}).sort();
   var passedKeys;
+  var err;
 
+  // If they passed in an array, loop through each one, and fail if any of them
+  // are malformed.
   if (object instanceof Array) {
     _.each(object, function(item) {
       passedKeys = _.keys(item).sort();
-
-      if (!passedKeys.equals(validKeys))
-        return false;
+      if (!validKeys.equals(passedKeys))
+        err = true;
     });
-    return true;
+    err = false;
   }
 
+  if (err)
+    return false;
+
+  // Otherwise, check if the object they passed in is valid.
   passedKeys = _.keys(object).sort();
   return validKeys.equals(passedKeys);
+}
+
+/**
+ * Utility function to ensure the second key of the object is of type array
+ */
+function hasValidRuleset(object) {
+  var err;
+  // If they passed in an array, loop through each one, and fail if any of them
+  // are malformed.
+  if (object instanceof Array) {
+    _.each(object, function(item) {
+      console.log('Item ruleset: ', typeof(item.rules));
+      console.log('Proper ruleset: ', []);
+      console.log('Proper type? ', item.rules instanceof Array);
+
+      if (!(item.rules instanceof Array))
+        err = true;
+    });
+    err = false;
+  }
+
+  if (err)
+    return false;
+
+  // Otherwise, check if the single object they passed in is valid.
+  return object.rules instanceof Array;
 }
 
 /**
