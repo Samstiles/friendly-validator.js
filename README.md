@@ -1,4 +1,4 @@
-###friendly-validator.js [![NPM version](https://badge.fury.io/js/friendly-validator.svg)](http://badge.fury.io/js/friendly-validator) [![Build Status](https://travis-ci.org/Latros/friendly-validator.js.svg?branch=master)](https://travis-ci.org/Latros/friendly-validator.js)
+###friendly-validator.js [![NPM version](https://badge.fury.io/js/friendly-validator.svg)](http://badge.fury.io/js/friendly-validator) [![Build Status](https://travis-ci.org/Latros/friendly-validator.js.svg?branch=master)](https://travis-ci.org/Latros/friendly-validator.js) [![GitHub version](https://badge.fury.io/gh/latros%2Ffriendly-validator.js.svg)](http://badge.fury.io/gh/latros%2Ffriendly-validator.js)
 ***
 
 A Node.JS validation library using node-validator, but with user-friendly validation error messages.
