@@ -27,7 +27,7 @@ module.exports = function(data) {
   /**
    * Throw an error if the data object they passed isn't in the allowed format of { value: '', rules: [] }
    */
-  if (!isValidValidatorObject(data))
+  if (!isInValidFormat(data))
     throw new Error(invalidArgsMalformedObject);
 
   /**
@@ -71,7 +71,7 @@ function generateError(value, rule) {
 /**
  * Predicate function to ensure a valid object value/rules pair is supplied
  */
-function isValidValidatorObject(object) {
+function isInValidFormat(object) {
   var validKeys = _.keys({value: '', rules: ''}).sort();
   var passedKeys;
   var err = false;

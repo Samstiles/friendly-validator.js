@@ -71,7 +71,8 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
     var data = { value: 'foofoo', rules: ['isEmail'] };
     console.log(validate(data));
     var err = validate(data);
-    expect(err).to.equal(false);
+    var array = err instanceof Array;
+    expect(array).to.equal(true);
   });
 
 });
