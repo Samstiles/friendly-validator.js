@@ -36,22 +36,22 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
    * Test for malformed array of validator objects
    */
   it('should throw an error due to at least one of the objects in the array they passed (MANY, ARRAY) being in the wrong object format', function() {
-    var onedata = [
+    var data = [
       { value: '', rules: [] },
       { someIncorrectProp: '', someOtherIncorrectProp: '' }
     ];
-    expect(validate.bind(validate, onedata)).to.throw("Invalid argument supplied. Friendly Validator requires the data you're passing in to be in a specific format.");
+    expect(validate.bind(validate, data)).to.throw("Invalid argument supplied. Friendly Validator requires the data you're passing in to be in a specific format.");
   });
   
   /**
   * Test for improper ruleset of array of validator objects
   */
   it('should throw an error due to the one of the rulesets they passed (MANY, ARRAY) being wrong (not a valid array, not a valid rule, etc)', function() {
-    var twodata = [
+    var data = [
       { value: '', rules: [] },
       { value: '', rules: 'asdfasdf' }
     ];
-    expect(validate.bind(validate, twodata)).to.throw("Invalid argument supplied. One or all of the objects passed in has an ivalid ruleset. Rulesets must be arrays.");
+    expect(validate.bind(validate, data)).to.throw("Invalid argument supplied. One or all of the objects passed in has an ivalid ruleset. Rulesets must be arrays.");
   });
 
   /**
