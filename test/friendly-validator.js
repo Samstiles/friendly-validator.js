@@ -29,7 +29,7 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
    * Test for improper ruleset of 1 field (must be array, a valid rule, etc)
    */
   it('should throw an error due to the ruleset they passed (ONE, OBJECT) being wrong (not a valid array, not a valid rule, etc)', function() {
-    expect(validate.bind(validate, { value: '', rules: 5 })).to.throw("Invalid argument supplied. One or all of the objects passed in has an ivalid ruleset. Rulesets must be arrays.");
+    expect(validate.bind(validate, { value: '', rules: 5 })).to.throw("Invalid argument supplied. One or all of the objects passed in has an invalid ruleset. Rulesets must be arrays of at least 1 rule.");
   });
 
   /**
@@ -49,16 +49,28 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
   it('should throw an error due to the one of the rulesets they passed (MANY, ARRAY) being wrong (not a valid array, not a valid rule, etc)', function() {
     var data = [
       { value: '', rules: [] },
-      { value: '', rules: 'asdfasdf' }
+      { value: '', rules: ['asdfasdf'] }
     ];
-    expect(validate.bind(validate, data)).to.throw("Invalid argument supplied. One or all of the objects passed in has an ivalid ruleset. Rulesets must be arrays.");
+    expect(validate.bind(validate, data)).to.throw("Invalid argument supplied. One or all of the objects passed in has an invalid ruleset. Rulesets must be arrays of at least 1 rule.");
   });
 
   /**
-   * Opposite as above, test that it DOESN'T throw an error because it is a properly formatted object
+   * Test to see if email rule works on valid data
    */
-  it('should NOT throw an error because the object were passing is in a valid format', function() {
-    var err = validate({ value: '', rules: [] });
+  it('should successfully validate the email address `foo@bar.com` and thus err should equal false', function() {
+    var data = { value: 'foo@bar.com', rules: ['isEmail'] };
+    console.log(validate(data));
+    var err = validate(data);
+    expect(err).to.equal(false);
+  });
+
+  /**
+   * Test to see if email rule FAILS on invalid data
+   */
+  it('should fail to validate email address `foofoo` and thus err should be the error string for email failing validation', function() {
+    var data = { value: 'foofoo', rules: ['isEmail'] };
+    console.log(validate(data));
+    var err = validate(data);
     expect(err).to.equal(false);
   });
 

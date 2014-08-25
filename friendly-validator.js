@@ -9,7 +9,7 @@ module.exports = function(data) {
   var invalidArgsMalformedObject = "Invalid argument supplied. Friendly Validator requires the data you're passing in to be in a specific format.";
   var invalidArgsIncorrectNumber = "Invalid argument supplied. Friendly Validator expects 1 parameter.";
   var invalidArgsIncorrectType = "Invalid argument supplied. Friendly Validator expects data passed to be an Object or an Array.";
-  var invalidArgsIncorrectRuleset = "Invalid argument supplied. One or all of the objects passed in has an ivalid ruleset. Rulesets must be arrays.";
+  var invalidArgsIncorrectRuleset = "Invalid argument supplied. One or all of the objects passed in has an invalid ruleset. Rulesets must be arrays of at least 1 rule.";
 
   /**
    * Throw an error if they supplied an incorrect number of arguments
@@ -43,11 +43,29 @@ module.exports = function(data) {
  * Primary Validate Function
  */
 function validate(data) {
+  var err = [];
+
+
   if (data instanceof Array) {
+    console.log('ARRAY, DUMMY!');
     return false;
   } else {
-    return false;
+    _.each(data.rules, function(rule) {
+      if ( !validator[rule](data.value) )
+        err.push(generateError(data.value, rule));
+    });
+
+    return (err.length === 0) ? false : err;
   }
+}
+
+/**
+ * Assembly function to take a bad value + rule and return an error object
+ */
+
+function generateError(value, rule) {
+
+  return true;
 }
 
 /**
@@ -82,13 +100,13 @@ function hasValidRuleset(object) {
   // are malformed.
   if (object instanceof Array) {
     _.each(object, function(item) {
-      if (!(item.rules instanceof Array))
+      if (!(item.rules instanceof Array) || item.rules.length > 0)
         err = true;
     });
     return (err) ? false : true;
   } else {
     // Otherwise, check if the single object they passed in is valid.
-    return object.rules instanceof Array;
+    return object.rules instanceof Array && object.rules.length > 0;
   }
 }
 
