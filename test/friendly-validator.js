@@ -59,7 +59,6 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
    */
   it('should successfully validate the email address `foo@bar.com` and thus err should equal false', function() {
     var data = { value: 'foo@bar.com', rules: ['isEmail'] };
-    console.log(validate(data));
     var err = validate(data);
     expect(err).to.equal(false);
   });
@@ -69,10 +68,8 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
    */
   it('should fail to validate email address `foofoo` and thus err should be the error string for email failing validation', function() {
     var data = { value: 'foofoo', rules: ['isEmail'] };
-    console.log(validate(data));
     var err = validate(data);
-    var array = err instanceof Array;
-    expect(array).to.equal(true);
+    expect(err).to.equal("'foofoo' is not a valid email address.");
   });
 
 });

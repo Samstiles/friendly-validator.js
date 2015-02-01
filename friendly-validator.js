@@ -1,5 +1,6 @@
 var validator = require('validator');
 var _ = require('lodash');
+var errorHash = require('./errorHash.json');
 
 module.exports = function(data) {
 
@@ -45,6 +46,8 @@ module.exports = function(data) {
 function validate(data) {
   var err = [];
 
+  console.log('DATA:', data);
+
   if (data instanceof Array) {
     console.log('ARRAY, DUMMY!');
     return false;
@@ -54,6 +57,8 @@ function validate(data) {
         err.push(generateError(data.value, rule));
     });
 
+    console.log('Err array assembly:', err);
+
     return (err.length === 0) ? false : err;
   }
 }
@@ -62,8 +67,8 @@ function validate(data) {
  * Assembly function to take a bad value + rule and return an error object
  */
 function generateError(value, rule) {
-
-  return true;
+  var err = errorHash[rule].replace(/%s/g, '"' + value + '"');
+  return err;
 }
 
 /**
