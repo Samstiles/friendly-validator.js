@@ -45,7 +45,6 @@ module.exports = function(data) {
 function validate(data) {
   var err = [];
 
-
   if (data instanceof Array) {
     console.log('ARRAY, DUMMY!');
     return false;
@@ -62,7 +61,6 @@ function validate(data) {
 /**
  * Assembly function to take a bad value + rule and return an error object
  */
-
 function generateError(value, rule) {
 
   return true;
@@ -119,9 +117,9 @@ Array.prototype.equals = function (array) {
   if (this.length != array.length)
       return false;
   for (var i = 0, l=this.length; i < l; i++) {
-      if (this[i] !== array[i]) { 
-          return false;   
-      }           
-  }       
+      if (this[i] !== array[i]) {
+          return false;
+      }
+  }
   return true;
 };
