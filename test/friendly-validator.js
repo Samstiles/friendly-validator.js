@@ -46,7 +46,7 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
   /**
   * Test for improper ruleset of array of validator objects
   */
-  it('should throw an error due to the one of the rulesets they passed (MANY, ARRAY) being wrong (not a valid array, not a valid rule, etc)', function() {
+  it('should throw an error due to the one of the rulesets they passed (MANY, ARRAY) being wrong (not a valid array)', function() {
     var data = [
       { value: '', rules: [] },
       { value: '', rules: ['asdfasdf'] }
