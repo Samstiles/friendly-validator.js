@@ -67,8 +67,7 @@ function validate(data) {
  * Assembly function to take a bad value + rule and return an error object
  */
 function generateError(value, rule) {
-  var err = errorHash[rule].replace(/%s/g, '"' + value + '"');
-  return err;
+  return errorHash[rule].replace(/%s/g, '"' + value + '"');
 }
 
 /**

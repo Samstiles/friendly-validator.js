@@ -69,7 +69,7 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
   it('should fail to validate email address `foofoo` and thus err should be the error string for email failing validation', function() {
     var data = { value: 'foofoo', rules: ['isEmail'] };
     var err = validate(data);
-    expect(err).to.equal("'foofoo' is not a valid email address.");
+    expect(err[0]).to.equal('"foofoo" is not a valid email address.');
   });
 
 });
