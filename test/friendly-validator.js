@@ -81,63 +81,220 @@ describe('-------------------------\n  Friendly Validator Test Tests!\n  -------
      var data = { value: 'foofoo', rules: ['isEmail'] };
      var err = validate(data);
      expect(err[0]).to.equal('"foofoo" is not a valid email address.');
-   });  
+   });
+
   /**
-   * Rule Test #1: isURL
+   * Rule Test #2: isURL
    */
+  it('should pass isURL test', function() {
+    var data = { value: 'google.ca', rules: ['isURL'] };
+    var err = validate(data);
+    expect(err).to.equal(false);
+  });
+
+  it('should fail isURL test', function() {
+    var data = { value: 'asdfasdf', rules: ['isURL'] };
+    var err = validate(data);
+    expect(err[0]).to.equal('"asdfasdf" is not in valid URL format.');
+  });
+
   /**
-   * Rule Test #1: isFQDN
+   * Rule Test #3: isFQDN
    */
+   it('should pass isFQDN test', function() {
+
+   });
+
+   it('should fail isFQDN test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isIP
+   * Rule Test #4: isIP
    */
+   it('should pass isIP test', function() {
+
+   });
+
+   it('should fail isIP test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isAlpha
+   * Rule Test #5: isAlpha
    */
+   it('should pass isAlpha test', function() {
+
+   });
+
+   it('should fail isAlpha test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isNumeric
+   * Rule Test #6: isNumeric
    */
+   it('should pass isNumeric test', function() {
+
+   });
+
+   it('should fail isNumeric test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isAlphanumeric
+   * Rule Test #7: isAlphanumeric
    */
+   it('should pass isAlphanumeric test', function() {
+
+   });
+
+   it('should fail isAlphanumeric test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isHexadecimal
+   * Rule Test #8: isHexadecimal
    */
+   it('should pass isHexadecimal test', function() {
+
+   });
+
+   it('should fail isHexadecimal test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isHexColor
+   * Rule Test #9: isHexColor
    */
+   it('should pass isHexColor test', function() {
+
+   });
+
+   it('should fail isHexColor test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isLowercase
+   * Rule Test #10: isLowercase
    */
+   it('should pass isLowercase test', function() {
+
+   });
+
+   it('should fail isLowercase test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isUppercase
+   * Rule Test #11: isUppercase
    */
+   it('should pass isUppercase test', function() {
+
+   });
+
+   it('should fail isUppercase test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isInt
+   * Rule Test #12: isInt
    */
+   it('should pass isInt test', function() {
+
+   });
+
+   it('should fail isInt test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isFloat
+   * Rule Test #13: isFloat
    */
+   it('should pass isFloat test', function() {
+
+   });
+
+   it('should fail isFloat test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isDate
+   * Rule Test #14: isDate
    */
+   it('should pass isDate test', function() {
+
+   });
+
+   it('should fail isDate test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isCreditCard
+   * Rule Test #15: isCreditCard
    */
+   it('should pass isCreditCard test', function() {
+
+   });
+
+   it('should fail isCreditCard test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isISBN
+   * Rule Test #16: isISBN
    */
+   it('should pass isISBN test', function() {
+
+   });
+
+   it('should fail isISBN test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isMobilePhone
+   * Rule Test #17: isMobilePhone
    */
+   it('should pass isMobilePhone test', function() {
+
+   });
+
+   it('should fail isMobilePhone test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isJSON
+   * Rule Test #18: isJSON
    */
+   it('should pass isJSON test', function() {
+
+   });
+
+   it('should fail isJSON test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isAscii
+   * Rule Test #19: isAscii
    */
+   it('should pass isAscii test', function() {
+
+   });
+
+   it('should fail isAscii test', function() {
+
+   });
+
   /**
-   * Rule Test #1: isMongoId
+   * Rule Test #20: isMongoId
    */
+   it('should pass isMongoId test', function() {
+
+   });
+
+   it('should fail isMongoId test', function() {
+
+   });
+
 
 });
