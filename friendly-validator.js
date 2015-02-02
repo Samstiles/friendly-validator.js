@@ -127,14 +127,19 @@ module.exports = function(data) {
    * Predicate function to ensure the rules passed in exist and are valid rules usable by this library
    */
   function hasValidRules(object) {
-    var errors = [];
+    var errors = [], tempErrors = [];
     if (object instanceof Array) {
-      _.each(object, function(validation) {
-        errors.push(_.each(_.difference(validation.rules, validRules)));
+      _.each(object, function(element) {
+        tempErrors = _.difference(element.rules, validRules);
+        _.each(tempErrors, function(temp) {
+          errors.push(temp);
+        });
       });
     } else {
       errors = _.difference(object.rules, validRules);
     }
+
+    console.log('Discrepencies:', errors);
 
     return (errors.length === 0);
   }
