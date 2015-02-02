@@ -48,7 +48,6 @@ module.exports = function(data) {
   /**
    * Throw an error if the ruleset(s) try and call a validation that is not valid in this library
    */
-  console.log('HAS VALID RULES?', hasValidRules(data));
   if (!hasValidRules(data))
     throw new Error(errorStrings.invalidArgsRulesetNotAllowed);
 
@@ -58,28 +57,27 @@ module.exports = function(data) {
   function validate(data) {
     var err = [];
 
-    console.log('DATA:', data);
-
     if (data instanceof Array) {
-      console.log('ARRAY, DUMMY!');
-      return false;
+      _.each(data, function (element) {
+        _.each(element.rules, function(rule) {
+          if ( !validator[rule](element.value) )
+            err.push(generateError(element.value, rule));
+        });
+      });
     } else {
       _.each(data.rules, function(rule) {
         if ( !validator[rule](data.value) )
           err.push(generateError(data.value, rule));
       });
-
-      console.log('Err array assembly:', err);
-
-      return (err.length === 0) ? false : err;
     }
+
+    return (err.length === 0) ? false : err;
   }
 
   /**
    * Assembly function to take a bad value + rule and return an error object
    */
   function generateError(value, rule) {
-    // 
     return errorHash[rule].replace(/%s/g, '"' + value + '"');
   }
 
@@ -115,7 +113,7 @@ module.exports = function(data) {
     // are malformed.
     if (object instanceof Array) {
       _.each(object, function(item) {
-        if (!(item.rules instanceof Array) || item.rules.length > 0)
+        if (!(item.rules instanceof Array) || item.rules.length === 0)
           err = true;
       });
       return (err) ? false : true;
@@ -129,7 +127,7 @@ module.exports = function(data) {
    * Predicate function to ensure the rules passed in exist and are valid rules usable by this library
    */
   function hasValidRules(object) {
-    var errors;
+    var errors = [];
     if (object instanceof Array) {
       _.each(object, function(validation) {
         errors.push(_.each(_.difference(validation.rules, validRules)));
@@ -138,12 +136,7 @@ module.exports = function(data) {
       errors = _.difference(object.rules, validRules);
     }
 
-    console.log('Obj rules:', object.rules);
-    console.log('Valid rules:', validRules);
-
-    console.log('ERRORS:', errors);
-
-    return (errors.length !== 0);
+    return (errors.length === 0);
   }
 
   return validate(data);

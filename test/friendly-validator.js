@@ -42,6 +42,16 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
     ];
     expect(validate.bind(validate, data)).to.throw("Invalid argument supplied. Friendly Validator requires the data you're passing in to be in a specific format.");
   });
+
+  /**
+   * Test to see if the rule passed in is even recognized by the library
+   */
+  it('should fail to validate because the rule being passed is not recognized by the library', function() {
+    var data = [
+      { value: 'foo@foo.com', rules: ['isTotallyNotARule'] }
+    ];
+    expect(validate.bind(validate, data)).to.throw("Invalid argument supplied. One or all of the objects passed in has a rule that is not in the list of validation rules used in this library. For a list of valid rules, visit https://github.com/latros/friendly-validator.git");
+  });
   
   /**
   * Test for improper ruleset of array of validator objects
@@ -49,7 +59,7 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
   it('should throw an error due to the one of the rulesets they passed (MANY, ARRAY) being wrong (not a valid array)', function() {
     var data = [
       { value: '', rules: [] },
-      { value: '', rules: ['asdfasdf'] }
+      { value: '', rules: ['isEmail'] }
     ];
     expect(validate.bind(validate, data)).to.throw("Invalid argument supplied. One or all of the objects passed in has an invalid ruleset. Rulesets must be arrays of at least 1 rule.");
   });

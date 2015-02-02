@@ -1,3 +1,22 @@
 {
-  "isEmail": "%s is not a valid email address."
+  "isEmail": "%s is not a valid email address.",
+  "isURL": "%s is not in valid URL format.",
+  "isFQDN": "%s is not a valid fully-qualified-domain-name.",
+  "isIP": "%s is not in valid IP Address format.",
+  "isAlpha": "%s contains non-alpha characters.",
+  "isNumeric": "%s contains non-numeric characters.",
+  "isAlphanumeric": "%s contains non-alphanumeric characters.",
+  "isHexadecimal": "%s is not a valid hexidecimal number.",
+  "isHexColor": "%s is not a valid hex color.",
+  "isLowercase": "%s must be all lowercase.",
+  "isUppercase": "%s must be all uppercase.",
+  "isInt": "%s is not a valid integer.",
+  "isFloat": "%s is not a valid float.",
+  "isDate": "%s is not a valid date string.",
+  "isCreditCard": "%s is not a valid Credit Card number.",
+  "isISBN": "%s is not a valid ISBN.",
+  "isMobilePhone": "%s is not a valid mobile phone number.",
+  "isJSON": "%s is not valid JSON.",
+  "isAscii": "%s must be only ASCII characters.",
+  "isMongoId": "%s is not a valid MongoId"
 }
