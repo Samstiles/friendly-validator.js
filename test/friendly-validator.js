@@ -369,26 +369,48 @@ describe('-------------------------\n  Friendly Validator Test Tests!\n  -------
   // });
   
   it('should pass a big ass fancy test', function() {
-    var data = [{ value: '506-476-1666'                        , rules: ['isMobilePhone'] },
-                { value: 'samstil.es'                          , rules: ['isURL'] },
-                { value: 'https://google.ca/'                  , rules: ['isFQDN'] },
-                { value: 'sam@phasesolutions.ca'               , rules: ['isEmail'] },
-                { value: 'leahbelyea@gmail.com'                , rules: ['isEmail'] },
-                { value: '3758 5044 8291 7034'                 , rules: ['isCreditCard'] },
-                { value: 'asdfljhgsdfgjkasflhau'               , rules: ['isAlpha'] },
-                { value: 'Samuel Stiles'                       , rules: ['isAlphanumeric'] },
-                { value: '534623934562345624625252354'         , rules: ['isNumeric'] },
-                { value: 'ISBN 0-14-020652-3'                  , rules: ['isISBN'] },
-                { value: '507f191e810c19729de860ea'            , rules: ['isMongoId'] },
-                { value: '_!_!+f-fad=FA./,;[a8dsy 35'          , rules: ['isAscii'] },
-                { value: '{ "key_one": "value", "key_two": 5 }', rules: ['isJSON'] },
-                { value: 'February 1st, 2015'                  , rules: ['isDate'] },
-                { value: 5                                     , rules: ['isInt'] },
-                { value: 5.46                                  , rules: ['isFloat'] },
-                { value: 'all lowercase'                       , rules: ['isLowercase'] },
-                { value: 'ALL UPPERCASE'                       , rules: ['isUppercase'] },
-                { value: '#FFFFFF'                             , rules: ['isHexColor'] }];
+    var data = [{ value: 'samstil.es/this-is-a-url/'            , rules: ['isURL'] },
+                { value: 'google.ca'                            , rules: ['isFQDN'] },
+                { value: 'sam@phasesolutions.ca'                , rules: ['isEmail'] },
+                { value: 'leahbelyea@gmail.com'                 , rules: ['isEmail'] },
+                { value: '4530930905253018'                     , rules: ['isCreditCard'] },
+                { value: 'asdfljhgsdfgjkasflhau'                , rules: ['isAlpha'] },
+                { value: 'SamuelStiles'                         , rules: ['isAlphanumeric'] },
+                { value: '534623934562345624625252354'          , rules: ['isNumeric'] },
+                { value: '0-14-020652-3'                        , rules: ['isISBN'] },
+                { value: '507f191e810c19729de860ea'             , rules: ['isMongoId'] },
+                { value: '_!_!+f-fad=FA./,;[a8dsy 35'           , rules: ['isAscii'] },
+                { value: '{ "key_one": "value", "key_two": 5 }' , rules: ['isJSON'] },
+                { value: '01/02/2015'                           , rules: ['isDate'] },
+                { value: 5                                      , rules: ['isInt'] },
+                { value: 5.46                                   , rules: ['isFloat'] },
+                { value: 'all lowercase'                        , rules: ['isLowercase'] },
+                { value: 'ALL UPPERCASE'                        , rules: ['isUppercase'] },
+                { value: '#FFFFFF'                              , rules: ['isHexColor'] }];
     var err = validate(data);
     expect(err).to.equal(false);
+  });
+
+  it('should fail a big ass fancy test', function() {
+    var data = [{ value: 'argh'            , rules: ['isURL'] },
+                { value: 'f.a.sg/sgasgasdg/google.ca'    , rules: ['isFQDN'] },
+                { value: 'samphasesolutions.ca'          , rules: ['isEmail'] },
+                { value: 'leahbelyeagmail.com'           , rules: ['isEmail'] },
+                { value: '453093090553q4253018'          , rules: ['isCreditCard'] },
+                { value: 'asdfljhgsdfgjk555asflhau'      , rules: ['isAlpha'] },
+                { value: 'SamuelStiles./]]['             , rules: ['isAlphanumeric'] },
+                { value: '53462562asdfa4625252354'       , rules: ['isNumeric'] },
+                { value: '0-14-agjj020652-3'             , rules: ['isISBN'] },
+                { value: '507f191e8asdfh10c19729de860ea' , rules: ['isMongoId'] },
+                { value: '_!_f-¡=FA¡¡./,;[a8ds¡y 35'     , rules: ['isAscii'] },
+                { value: '{ totallyJSON }'               , rules: ['isJSON'] },
+                { value: 'Never'                         , rules: ['isDate'] },
+                { value: 5.5                             , rules: ['isInt'] },
+                { value: "5afs.46"                       , rules: ['isFloat'] },
+                { value: 'NOT all lowercase'             , rules: ['isLowercase'] },
+                { value: 'not ALL UPPERCASE'             , rules: ['isUppercase'] },
+                { value: '#FFFffffff'                    , rules: ['isHexColor'] }];
+    var err = validate(data);
+    expect(err.length).to.equal(18);
   });
 });

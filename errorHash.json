@@ -14,7 +14,6 @@
   "isDate": "%s is not a valid date string.",
   "isCreditCard": "%s is not a valid Credit Card number.",
   "isISBN": "%s is not a valid ISBN.",
-  "isMobilePhone": "%s is not a valid mobile phone number.",
   "isJSON": "%s is not valid JSON.",
   "isAscii": "%s must be only ASCII characters.",
   "isMongoId": "%s is not a valid MongoId"
