@@ -2,7 +2,7 @@ var chai = require('chai');
 var expect = chai.expect;
 var validate = require('../friendly-validator.js');
 
-describe('-------------------------\n  Friendly Validator Tests!\n  -------------------------\n', function() {
+describe('-------------------------\n  Friendly Validator Formatting/Misuse Tests!\n  -------------------------\n', function() {
 
   /**
    * Test for <1 or >2 parameters
@@ -64,22 +64,80 @@ describe('-------------------------\n  Friendly Validator Tests!\n  ------------
     expect(validate.bind(validate, data)).to.throw("Invalid argument supplied. One or all of the objects passed in has an invalid ruleset. Rulesets must be arrays of at least 1 rule.");
   });
 
-  /**
-   * Test to see if email rule works on valid data
-   */
-  it('should successfully validate the email address `foo@bar.com` and thus err should equal false', function() {
-    var data = { value: 'foo@bar.com', rules: ['isEmail'] };
-    var err = validate(data);
-    expect(err).to.equal(false);
-  });
+});
+
+describe('-------------------------\n  Friendly Validator Test Tests!\n  -------------------------\n', function() {
 
   /**
-   * Test to see if email rule FAILS on invalid data
+   * Rule Test #1: isEmail
    */
-  it('should fail to validate email address `foofoo` and thus err should be the error string for email failing validation', function() {
-    var data = { value: 'foofoo', rules: ['isEmail'] };
-    var err = validate(data);
-    expect(err[0]).to.equal('"foofoo" is not a valid email address.');
-  });
+   it('should pass isEmail test', function() {
+     var data = { value: 'foo@bar.com', rules: ['isEmail'] };
+     var err = validate(data);
+     expect(err).to.equal(false);
+   });
+
+   it('should fail isEmail test', function() {
+     var data = { value: 'foofoo', rules: ['isEmail'] };
+     var err = validate(data);
+     expect(err[0]).to.equal('"foofoo" is not a valid email address.');
+   });  
+  /**
+   * Rule Test #1: isURL
+   */
+  /**
+   * Rule Test #1: isFQDN
+   */
+  /**
+   * Rule Test #1: isIP
+   */
+  /**
+   * Rule Test #1: isAlpha
+   */
+  /**
+   * Rule Test #1: isNumeric
+   */
+  /**
+   * Rule Test #1: isAlphanumeric
+   */
+  /**
+   * Rule Test #1: isHexadecimal
+   */
+  /**
+   * Rule Test #1: isHexColor
+   */
+  /**
+   * Rule Test #1: isLowercase
+   */
+  /**
+   * Rule Test #1: isUppercase
+   */
+  /**
+   * Rule Test #1: isInt
+   */
+  /**
+   * Rule Test #1: isFloat
+   */
+  /**
+   * Rule Test #1: isDate
+   */
+  /**
+   * Rule Test #1: isCreditCard
+   */
+  /**
+   * Rule Test #1: isISBN
+   */
+  /**
+   * Rule Test #1: isMobilePhone
+   */
+  /**
+   * Rule Test #1: isJSON
+   */
+  /**
+   * Rule Test #1: isAscii
+   */
+  /**
+   * Rule Test #1: isMongoId
+   */
 
 });
