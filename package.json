@@ -24,7 +24,7 @@
   "homepage": "https://github.com/Latros/friendly-validator.js",
   "dependencies": {
     "lodash": "^2.4.1",
-    "validator": "^3.17.0"
+    "validator": "3.28.0"
   },
   "devDependencies": {
     "chai": "^1.9.1",
