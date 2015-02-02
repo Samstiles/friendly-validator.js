@@ -71,23 +71,23 @@ describe('-------------------------\n  Friendly Validator Test Tests!\n  -------
   /**
    * Rule Test #1: isEmail
    */
-   it('should pass isEmail test', function() {
-     var data = { value: 'foo@bar.com', rules: ['isEmail'] };
-     var err = validate(data);
-     expect(err).to.equal(false);
-   });
+  it('should pass isEmail test', function() {
+   var data = { value: 'foo@bar.com', rules: ['isEmail'] };
+   var err = validate(data);
+   expect(err).to.equal(false);
+  });
 
-   it('should fail isEmail test', function() {
-     var data = { value: 'foofoo', rules: ['isEmail'] };
-     var err = validate(data);
-     expect(err[0]).to.equal('"foofoo" is not a valid email address.');
-   });
+  it('should fail isEmail test', function() {
+   var data = { value: 'foofoo', rules: ['isEmail'] };
+   var err = validate(data);
+   expect(err[0]).to.equal('"foofoo" is not a valid email address.');
+  });
 
   /**
    * Rule Test #2: isURL
    */
   it('should pass isURL test', function() {
-    var data = { value: 'google.ca', rules: ['isURL'] };
+    var data = { value: 'https://google.ca/', rules: ['isURL'] };
     var err = validate(data);
     expect(err).to.equal(false);
   });
@@ -101,200 +101,270 @@ describe('-------------------------\n  Friendly Validator Test Tests!\n  -------
   /**
    * Rule Test #3: isFQDN
    */
-   it('should pass isFQDN test', function() {
+  // it('should pass isFQDN test', function() {
+  //   var data = { value: 'https://google.ca/', rules: ['isFQDN'] };
+  //   var err = validate(data);
+  //   expect(err).to.equal(false);
+  // });
 
-   });
-
-   it('should fail isFQDN test', function() {
-
-   });
+  // it('should fail isFQDN test', function() {
+  //   var data = { value: 'google.ca', rules: ['isFQDN'] };
+  //   var err = validate(data);
+  //   expect(err[0]).to.equal("Your mom");
+  // });
 
   /**
    * Rule Test #4: isIP
    */
-   it('should pass isIP test', function() {
-
-   });
-
-   it('should fail isIP test', function() {
-
-   });
-
-  /**
-   * Rule Test #5: isAlpha
-   */
-   it('should pass isAlpha test', function() {
-
-   });
-
-   it('should fail isAlpha test', function() {
-
-   });
-
-  /**
-   * Rule Test #6: isNumeric
-   */
-   it('should pass isNumeric test', function() {
-
-   });
-
-   it('should fail isNumeric test', function() {
-
-   });
-
-  /**
-   * Rule Test #7: isAlphanumeric
-   */
-   it('should pass isAlphanumeric test', function() {
-
-   });
-
-   it('should fail isAlphanumeric test', function() {
-
-   });
-
-  /**
-   * Rule Test #8: isHexadecimal
-   */
-   it('should pass isHexadecimal test', function() {
-
-   });
-
-   it('should fail isHexadecimal test', function() {
-
-   });
-
-  /**
-   * Rule Test #9: isHexColor
-   */
-   it('should pass isHexColor test', function() {
-
-   });
-
-   it('should fail isHexColor test', function() {
-
-   });
-
-  /**
-   * Rule Test #10: isLowercase
-   */
-   it('should pass isLowercase test', function() {
-
-   });
-
-   it('should fail isLowercase test', function() {
-
-   });
-
-  /**
-   * Rule Test #11: isUppercase
-   */
-   it('should pass isUppercase test', function() {
-
-   });
-
-   it('should fail isUppercase test', function() {
-
-   });
-
-  /**
-   * Rule Test #12: isInt
-   */
-   it('should pass isInt test', function() {
-
-   });
-
-   it('should fail isInt test', function() {
-
-   });
-
-  /**
-   * Rule Test #13: isFloat
-   */
-   it('should pass isFloat test', function() {
-
-   });
-
-   it('should fail isFloat test', function() {
-
-   });
-
-  /**
-   * Rule Test #14: isDate
-   */
-   it('should pass isDate test', function() {
-
-   });
-
-   it('should fail isDate test', function() {
-
-   });
-
-  /**
-   * Rule Test #15: isCreditCard
-   */
-   it('should pass isCreditCard test', function() {
-
-   });
-
-   it('should fail isCreditCard test', function() {
-
-   });
-
-  /**
-   * Rule Test #16: isISBN
-   */
-   it('should pass isISBN test', function() {
-
-   });
-
-   it('should fail isISBN test', function() {
-
-   });
-
-  /**
-   * Rule Test #17: isMobilePhone
-   */
-   it('should pass isMobilePhone test', function() {
-
-   });
-
-   it('should fail isMobilePhone test', function() {
-
-   });
-
-  /**
-   * Rule Test #18: isJSON
-   */
-   it('should pass isJSON test', function() {
-
-   });
-
-   it('should fail isJSON test', function() {
-
-   });
-
-  /**
-   * Rule Test #19: isAscii
-   */
-   it('should pass isAscii test', function() {
-
-   });
-
-   it('should fail isAscii test', function() {
-
-   });
-
-  /**
-   * Rule Test #20: isMongoId
-   */
-   it('should pass isMongoId test', function() {
-
-   });
-
-   it('should fail isMongoId test', function() {
-
-   });
-
-
+  it('should pass isIP test', function() {
+    var data = { value: '192.168.1.2', rules: ['isIP'] };
+    var err = validate(data);
+    expect(err).to.equal(false);
+  });
+
+  it('should fail isIP test', function() {
+    var data = { value: '53246274547', rules: ['isIP'] };
+    var err = validate(data);
+    expect(err[0]).to.equal('"53246274547" is not in valid IP Address format.');
+  });
+
+  // /**
+  //  * Rule Test #5: isAlpha
+  //  */
+  it('should pass isAlpha test', function() {
+    var data = { value: 'asdfasdf', rules: ['isAlpha'] };
+    var err = validate(data);
+    expect(err).to.equal(false);
+  });
+
+  it('should fail isAlpha test', function() {
+    var data = { value: '5a5asd5ads6sfdy87d', rules: ['isAlpha'] };
+    var err = validate(data);
+    expect(err[0]).to.equal('"5a5asd5ads6sfdy87d" contains non-alpha characters.');
+  });
+
+  // /**
+  //  * Rule Test #6: isNumeric
+  //  */
+  it('should pass isNumeric test', function() {
+    var data = { value: '506346346245646845263', rules: ['isNumeric'] };
+    var err = validate(data);
+    expect(err).to.equal(false);
+  });
+
+  it('should fail isNumeric test', function() {
+    var data = { value: 'fasdjkgsdygkadygetg9drygy5go4', rules: ['isNumeric'] };
+    var err = validate(data);
+    expect(err[0]).to.equal('"fasdjkgsdygkadygetg9drygy5go4" contains non-numeric characters.');
+  });
+
+  // /**
+  //  * Rule Test #7: isAlphanumeric
+  //  */
+  // it('should pass isAlphanumeric test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isAlphanumeric test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #8: isHexadecimal
+  //  */
+  // it('should pass isHexadecimal test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isHexadecimal test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #9: isHexColor
+  //  */
+  // it('should pass isHexColor test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isHexColor test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #10: isLowercase
+  //  */
+  // it('should pass isLowercase test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isLowercase test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #11: isUppercase
+  //  */
+  // it('should pass isUppercase test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isUppercase test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #12: isInt
+  //  */
+  // it('should pass isInt test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isInt test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #13: isFloat
+  //  */
+  // it('should pass isFloat test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isFloat test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #14: isDate
+  //  */
+  // it('should pass isDate test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isDate test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #15: isCreditCard
+  //  */
+  // it('should pass isCreditCard test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isCreditCard test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #16: isISBN
+  //  */
+  // it('should pass isISBN test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isISBN test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #17: isMobilePhone
+  //  */
+  // it('should pass isMobilePhone test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isMobilePhone test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #18: isJSON
+  //  */
+  // it('should pass isJSON test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isJSON test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #19: isAscii
+  //  */
+  // it('should pass isAscii test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isAscii test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // /**
+  //  * Rule Test #20: isMongoId
+  //  */
+  // it('should pass isMongoId test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
+
+  // it('should fail isMongoId test', function() {
+  //   var data = { value: '', rules: [''] };
+  //   var err = validate(data);
+  //   expect().to.equal();
+  // });
 });
