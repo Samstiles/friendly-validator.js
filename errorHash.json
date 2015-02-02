@@ -6,7 +6,6 @@
   "isAlpha": "%s contains non-alpha characters.",
   "isNumeric": "%s contains non-numeric characters.",
   "isAlphanumeric": "%s contains non-alphanumeric characters.",
-  "isHexadecimal": "%s is not a valid hexidecimal number.",
   "isHexColor": "%s is not a valid hex color.",
   "isLowercase": "%s must be all lowercase.",
   "isUppercase": "%s must be all uppercase.",

@@ -16,9 +16,9 @@ module.exports = function(data) {
   };
 
   var validRules = ["isEmail", "isURL", "isFQDN", "isIP", "isAlpha", "isNumeric", "isAlphanumeric",
-                    "isBase64", "isHexadecimal", "isHexColor", "isLowercase", "isUppercase",
-                    "isInt", "isFloat", "isDate", "isCreditCard", "isISBN", "isMobilePhone",
-                    "isJSON", "isAscii", "isMongoId"];
+                    "isBase64", "isHexColor", "isLowercase", "isUppercase", "isInt", "isFloat",
+                    "isDate", "isCreditCard", "isISBN", "isMobilePhone", "isJSON", "isAscii",
+                    "isMongoId"];
 
   /**
    * Throw an error if they supplied an incorrect number of arguments
